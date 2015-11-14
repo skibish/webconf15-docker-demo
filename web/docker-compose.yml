@@ -1,0 +1,23 @@
+web:
+  image: nginx:latest
+  ports:
+    - 80:80
+  volumes:
+    - .:/var/www/html
+    - ./config/vhost.conf:/etc/nginx/conf.d/vhost.conf
+  links:
+    - php
+php:
+  build: ./config/php
+  volumes:
+    - .:/var/www/html
+    - ./config/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
+  links:
+    - db
+db:
+  image: mysql:latest
+  ports:
+    - 3306:3306
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=todo

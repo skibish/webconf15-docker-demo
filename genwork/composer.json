@@ -1,0 +1,7 @@
+{
+    "require": {
+        "fzaninotto/faker": "~1.5",
+        "pda/pheanstalk": "~3.1",
+        "monolog/monolog": "~1.17"
+    }
+}
